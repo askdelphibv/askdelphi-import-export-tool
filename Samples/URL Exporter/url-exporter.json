@@ -1,0 +1,18 @@
+{
+    "Namespace": "http://tempuri.org/doppio-external",
+    "TopicTypes": [],
+  "Mappings": [
+    {
+      "JSONPath": "$.Groups[?(@.PartGroupId=='basic-data')].Parts[?(@.PartId=='title-description')].Editors[?(@.EditorFieldId=='title')].Value.String.Value",
+      "TargetField": "title"
+    },
+    {
+      "JSONPath": "$.Groups[?(@.PartGroupId=='basic-data')].Parts[?(@.PartId=='title-description')].Editors[?(@.EditorFieldId=='title')].Value.String.Markup",
+      "TargetField": "titleMarkup"
+    },
+    {
+      "JSONPath": "$.Groups[?(@.PartGroupId=='content')].Parts[?(@.PartId=='link-meta-data')].Editors[?(@.EditorFieldId=='url')].Value.String.Value",
+      "TargetField": "url"
+    }
+  ]
+}

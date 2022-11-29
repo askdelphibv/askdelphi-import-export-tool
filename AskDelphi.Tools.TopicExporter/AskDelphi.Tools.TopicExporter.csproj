@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>AskDelphi B.V.</Authors>
+    <Product>AskDelphi</Product>
+    <PackageProjectUrl>https://doppio.visualstudio.com/Doppio/_git/askdelphi-tools-topic-import-export</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AskDelphi.Tools.EditingAPI\AskDelphi.Tools.EditingAPI.csproj" />
+    <ProjectReference Include="..\AskDelphi.Tools.ImportExport\AskDelphi.Tools.ImportExport.csproj" />
+  </ItemGroup>
+
+</Project>

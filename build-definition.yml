@@ -1,0 +1,182 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'Restore Nuget Packages'
+  inputs:
+    command: 'restore'
+    projects: './AskDelphi.Tools.ImportExport.sln'
+
+- task: DotNetCoreCLI@2
+  displayName: Build importer for win-x86
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicImporter/AskDelphi.Tools.TopicImporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/win-x86" -p:PublishProfile=win-x86'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build importer for win-x64
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicImporter/AskDelphi.Tools.TopicImporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/win-x64" -p:PublishProfile=win-x64'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build importer for win-arm
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicImporter/AskDelphi.Tools.TopicImporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/win-arm" -p:PublishProfile=win-arm'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build importer for linux-x64
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicImporter/AskDelphi.Tools.TopicImporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/linux-x64" -p:PublishProfile=linux-x64'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build importer for linux-arm
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicImporter/AskDelphi.Tools.TopicImporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/linux-arm" -p:PublishProfile=linux-arm'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build importer for osx-x64
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicImporter/AskDelphi.Tools.TopicImporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/osx-x64" -p:PublishProfile=osx-x64'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build exporter for win-x86
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicExporter/AskDelphi.Tools.TopicExporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/win-x86" -p:PublishProfile=win-x86'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build exporter for win-x64
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicExporter/AskDelphi.Tools.TopicExporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/win-x64" -p:PublishProfile=win-x64'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build exporter for win-arm
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicExporter/AskDelphi.Tools.TopicExporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/win-arm" -p:PublishProfile=win-arm'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build exporter for linux-x64
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicExporter/AskDelphi.Tools.TopicExporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/linux-x64" -p:PublishProfile=linux-x64'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build exporter for linux-arm
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicExporter/AskDelphi.Tools.TopicExporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/linux-arm" -p:PublishProfile=linux-arm'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: DotNetCoreCLI@2
+  displayName: Build exporter for osx-x64
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './AskDelphi.Tools.TopicExporter/AskDelphi.Tools.TopicExporter.csproj'
+    arguments: '--configuration Release --output "$(build.artifactstagingdirectory)/osx-x64" -p:PublishProfile=osx-x64'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+- task: CmdLine@2
+  displayName: Install Azure SignTool
+  inputs:
+    script: 'set DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true && dotnet tool install --global AzureSignTool --version 2.0.17'
+    failOnStderr: true    
+
+- task: CmdLine@2
+  displayName: Code-sign executables
+  inputs:
+    script: 'AzureSignTool.exe sign ^
+      --description-url "https://askdelphi.com" ^
+      --file-digest sha512 ^
+      --azure-key-vault-url $(AKV_URL) ^
+      --azure-key-vault-client-id $(AKV_CLIENT_ID) ^
+      --azure-key-vault-client-secret $(AKV_CLIENT_SECRET) ^
+      --azure-key-vault-certificate code-signing-2022 ^
+      --timestamp-rfc3161 http://timestamp.digicert.com ^
+      --timestamp-digest sha512 ^
+      --verbose ^
+      "$(build.artifactstagingdirectory)\win-x86\AskDelphi.Tools.TopicImporter.exe" ^
+      "$(build.artifactstagingdirectory)\win-x64\AskDelphi.Tools.TopicImporter.exe" ^
+      "$(build.artifactstagingdirectory)\win-arm\AskDelphi.Tools.TopicImporter.exe" ^
+      "$(build.artifactstagingdirectory)\win-x86\AskDelphi.Tools.TopicExporter.exe" ^
+      "$(build.artifactstagingdirectory)\win-x64\AskDelphi.Tools.TopicExporter.exe" ^
+      "$(build.artifactstagingdirectory)\win-arm\AskDelphi.Tools.TopicExporter.exe"'
+    failOnStderr: true    
+
+- task: AzureFileCopy@4
+  displayName: 'Upload build artifacts to the the askdelphibuilds storage account'
+  inputs:
+    sourcePath: '$(build.artifactstagingdirectory)'
+    azureSubscription: 'ARM - PSPC-AskDelphi'
+    additionalArgumentsForBlobCopy: |
+      --recursive
+    destination: azureBlob
+    storage: askdelphibuilds
+    containerName: 'tools'
+    blobPrefix: 'import-export/build-$(Build.BuildNumber)/'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    artifactName: 'drop' 
+    PathtoPublish: '$(build.artifactstagingdirectory)'

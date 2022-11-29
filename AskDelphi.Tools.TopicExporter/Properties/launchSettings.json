@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AskDelphi.Tools.TopicExporter": {
+      "commandName": "Project",
+      "commandLineArgs": "--session-code \"77CXKP-4Y8HC3\" --config \"D:\\git\\askdelphi-tools-topic-import-export\\Samples\\URL Exporter\\url-exporter.json\" --tenantid \"87b664f3-db62-4f9d-a008-c7f5f26928eb\" --hostid \"e2d6ae3c-b75f-4b7e-8a4f-bb208144598f\" --projectid \"f3767723-6ce6-4dd7-97e9-24e58e92e8f7\" --aclid \"b44c32b8-c28a-4682-a6a7-47c0ff9d451e\" --out \"d:\\scratch\\url-exporter-urls\\export-urls-1.json\" --save-auth-file \"d:\\scratch\\url-exporter-urls\\auth.json\""
+    }
+  }
+}

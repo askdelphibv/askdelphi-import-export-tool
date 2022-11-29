@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AskDelphi.Tools.ImportExport", "AskDelphi.Tools.ImportExport\AskDelphi.Tools.ImportExport.csproj", "{A88C9336-883F-4527-AFAB-AEC5D0AB5675}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AskDelphi.Tools.TopicImporter", "AskDelphi.Tools.TopicImporter\AskDelphi.Tools.TopicImporter.csproj", "{6DC9AFD4-99AE-4744-84BE-AE49E501ECF0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AskDelphi.Tools.TopicExporter", "AskDelphi.Tools.TopicExporter\AskDelphi.Tools.TopicExporter.csproj", "{72964CE9-B573-4AB2-A63F-D52E178C9128}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AskDelphi.Tools.EditingAPI", "AskDelphi.Tools.EditingAPI\AskDelphi.Tools.EditingAPI.csproj", "{CCCCC1F1-6386-4EEC-8D1F-50A1D34CD9BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{21396120-BC5B-44CD-9417-24490EC0F907}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "URL Exporter", "URL Exporter", "{C87AD430-25EB-4D9B-836C-6ADBE1ACBF31}"
+	ProjectSection(SolutionItems) = preProject
+		Samples\URL Exporter\export-to-excel.ps1 = Samples\URL Exporter\export-to-excel.ps1
+		Samples\URL Exporter\export-to-json.ps1 = Samples\URL Exporter\export-to-json.ps1
+		Samples\URL Exporter\url-exporter.json = Samples\URL Exporter\url-exporter.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source Control", "Source Control", "{53F752C5-0CF5-44A0-A4A7-C2440A1B28C0}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		build-definition.yml = build-definition.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A88C9336-883F-4527-AFAB-AEC5D0AB5675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A88C9336-883F-4527-AFAB-AEC5D0AB5675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A88C9336-883F-4527-AFAB-AEC5D0AB5675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A88C9336-883F-4527-AFAB-AEC5D0AB5675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC9AFD4-99AE-4744-84BE-AE49E501ECF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC9AFD4-99AE-4744-84BE-AE49E501ECF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC9AFD4-99AE-4744-84BE-AE49E501ECF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC9AFD4-99AE-4744-84BE-AE49E501ECF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72964CE9-B573-4AB2-A63F-D52E178C9128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72964CE9-B573-4AB2-A63F-D52E178C9128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72964CE9-B573-4AB2-A63F-D52E178C9128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72964CE9-B573-4AB2-A63F-D52E178C9128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCCC1F1-6386-4EEC-8D1F-50A1D34CD9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCCC1F1-6386-4EEC-8D1F-50A1D34CD9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCCC1F1-6386-4EEC-8D1F-50A1D34CD9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCCC1F1-6386-4EEC-8D1F-50A1D34CD9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C87AD430-25EB-4D9B-836C-6ADBE1ACBF31} = {21396120-BC5B-44CD-9417-24490EC0F907}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C794F1C7-3F5B-40D5-B75B-BA57D7339C2A}
+	EndGlobalSection
+EndGlobal
